@@ -1,0 +1,15 @@
+{
+  "name": "serverless-todo",
+  "version": "1.0.0",
+  "description": "Sample TODO app back-end",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Kaj Ström",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.214.1",
+    "claudia-api-builder": "^3.0.2"
+  }
+}
