@@ -1,14 +1,18 @@
+const
+    AWS = require("aws-sdk"),
+    dbClient = new AWS.DynamoDB.DocumentClient();
+
 function getTodos () {
-    return [
-        {
-            done: false,
-            description: "Tee jotain"
-        },
-        {
-            done: false,
-            description: "Tee lisää jotain"
-        }
-    ];
+    return dbClient.scan({
+        TableName: "todos"
+    }).promise()
+        .then((res) => {
+            return res.Items;
+        })
+        .catch((error) => {
+            console.log("Getting todo items failed", error);
+            throw error
+        });
 }
 
 module.exports = getTodos;
