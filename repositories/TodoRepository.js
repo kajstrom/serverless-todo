@@ -14,5 +14,19 @@ module.exports = {
                 console.log("Getting todo items failed", error);
                 throw error
             });
+    },
+    add: function (todo) {
+        return dbClient.put({
+            TableName: "todos",
+            Item: todo
+        }).promise()
+            .then((result) => {
+                console.log("Todo item has been saved", result);
+                return result;
+            })
+            .catch((error) => {
+                console.log("Error saving todo item", error);
+                throw error;
+            });
     }
 };

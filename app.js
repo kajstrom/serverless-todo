@@ -10,7 +10,7 @@ api.get("/", (request) => {
 });
 
 api.post("/", (request) => {
-    return createTodo(request);
+    return createTodo(request, todoRepository);
 }, {
     success: 201,
     error: 400
