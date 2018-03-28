@@ -1,0 +1,1 @@
+aws dynamodb create-table --table-name todos --attribute-definitions AttributeName=todoId,AttributeType=S --key-schema AttributeName=todoId,KeyType=HASH --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 --region eu-central-1 --query TableDescription.TableArn --output text
