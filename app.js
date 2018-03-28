@@ -1,17 +1,10 @@
-const ApiBuilder = require("claudia-api-builder"),
-    api = new ApiBuilder();
+const
+    ApiBuilder = require("claudia-api-builder"),
+    api = new ApiBuilder(),
+    getTodos = require("./handlers/get-todos");
 
 api.get("/", function () {
-    return [
-        {
-            done: false,
-            description: "Tee jotain"
-        },
-        {
-            done: false,
-            description: "Tee lisää jotain"
-        }
-    ]
+    return getTodos();
 });
 
 module.exports = api;
