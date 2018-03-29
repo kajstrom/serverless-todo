@@ -28,5 +28,26 @@ module.exports = {
                 console.log("Error saving todo item", error);
                 throw error;
             });
+    },
+    update: function (todoId, todo) {
+        return dbClient.update({
+            TableName: "todos",
+            Key: {
+                todoId: todoId
+            },
+            UpdateExpression: "set description = :desc, done = :done",
+            ExpressionAttributeValues: {
+                ":desc": todo.description,
+                ":done": todo.done
+            },
+            ReturnValues: "ALL_NEW"
+        }).promise()
+            .then((result) => {
+                return result.Attributes;
+            })
+            .catch((err) => {
+                console.log("Updating a todo item failed", err);
+                throw err;
+            });
     }
 };
