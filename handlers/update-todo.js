@@ -1,7 +1,7 @@
 function updateTodo(request, todoRepository) {
     const body = request.body;
 
-    if (!body.description || !body.done) {
+    if (!body.description || body.done === undefined) {
         throw new Error("Invalid todo item");
     }
 
